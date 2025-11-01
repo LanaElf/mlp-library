@@ -8,10 +8,10 @@
 
 		<ThemeSwitcher />
 
-		<a href="/" class="title">
+		<a :href="baseURL" class="title">
       <h1>
-        <div class="title-mlp">MLP</div>
-        <div class="title-sub">лучшие фанфики</div>
+        <span class="title-mlp">MLP</span>
+        <span class="title-sub">лучшие фанфики</span>
       </h1>
 		</a>
 
@@ -19,7 +19,7 @@
 	</header>
 
 	<div id="library" class="library-link">
-    <a href="/"><h2>Книжная полка</h2></a>
+    <a :href="baseURL"><h2>Книжная полка</h2></a>
 	</div>
 </template>
 
@@ -31,6 +31,8 @@ const themeStore = useThemeStore();
 const isLunaTheme = computed(() => {
   return themeStore.activeTheme === 'lunaTheme'
 });
+
+const baseURL = useRuntimeConfig().app.baseURL;
 </script>
 
 <style lang="scss">
@@ -70,6 +72,7 @@ h2 {
 	-webkit-animation: rainbow 10s ease infinite;
 	animation: rainbow 10s ease infinite;
   font-family: 'celestia', sans-serif;
+  display: block;
 }
 .title-sub {
 	font-size: 2em;
@@ -82,6 +85,7 @@ h2 {
 	-webkit-animation: rainbow 10s ease infinite;
 	animation: rainbow 10s ease infinite;
   font-family: 'celestia', sans-serif;
+  display: block;
 }
 
 .library-link {
@@ -101,15 +105,15 @@ h2 {
 }
 
 @-webkit-keyframes rainbow {
-  	0% { background-position: 0% 50% }
+  	0% { background-position: 0 50% }
   	50% { background-position: 100% 50% }
-  	100% { background-position: 0% 50% }
+  	100% { background-position: 0 50% }
 }
 
 @keyframes rainbow {
-  	0% { background-position: 0% 50% }
+  	0% { background-position: 0 50% }
   	50% { background-position: 100% 50% }
-  	100% { background-position: 0% 50% }
+  	100% { background-position: 0 50% }
 }
 
 .header-image {

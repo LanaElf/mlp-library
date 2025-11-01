@@ -53,6 +53,20 @@ li{
   padding-bottom: 10px;
 }
 
+h1 {
+  width: unset;
+  position: relative;
+  left: unset;
+  letter-spacing: unset;
+  line-height: unset;
+  margin: unset;
+  text-shadow: unset;
+}
+
+li {
+  width: unset;
+}
+
 .flex {
   display: flex;
 }
@@ -197,14 +211,14 @@ a, button {
 }
 
 .btn {
-	font-family: "vollcorn";
+	font-family: "vollcorn", sans-serif;
 	background: teal;
 	color: white;
 	border: none;
 	text-decoration: none;
 	padding: 10px 20px;
 	border-radius: 20px;
-	box-shadow: 0px 2px 5px #ddd;
+	box-shadow: 0 2px 5px #ddd;
 	font-size: 17px;
     transition: $baseTransition;
 
@@ -230,13 +244,9 @@ a, button {
 
 @media (max-device-width: 800px) and (-webkit-min-device-pixel-ratio: 2.5),
         (max-device-width: 800px) and (min--moz-device-pixel-ratio: 2.5),
-        (max-device-width: 800px) and (-o-min-device-pixel-ratio: 2.5),
-        (max-device-width: 800px) and (-ms-min-device-pixel-ratio: 2.5),
         (max-device-width: 800px) and (min-device-pixel-ratio: 2.5),
         (max-device-width: 600px) and (-webkit-min-device-pixel-ratio: 2),
         (max-device-width: 600px) and (min--moz-device-pixel-ratio: 2),
-        (max-device-width: 600px) and (-o-min-device-pixel-ratio: 2),
-        (max-device-width: 600px) and (-ms-min-device-pixel-ratio: 2),
         (max-device-width: 600px) and (min-device-pixel-ratio: 2) {
 
   .header {

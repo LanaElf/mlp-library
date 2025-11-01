@@ -21,7 +21,7 @@
                 <div>Жанры:</div>
                 <ul class="genres">
                   <li v-for="genre in selectedFic.genres">
-                        <a href="#filters" @click="selectGenre(genre)"
+                        <a @click="selectGenre(genre)"
                         class="button">
                       {{ genre }}
                     </a>
@@ -90,12 +90,13 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useLibraryStore } from '~/stores/library';
-import type { Fanfic, Chapter, Bookmark } from '~/types'
+import type { Fanfic, Chapter } from '~/types'
 import { fanfics } from '~/data/fanfics'
 import Preloader from "~/components/common/Preloader.vue";
 import BookmarkMaker from "~/components/BookmarkMaker.vue";
+import { useRuntimeConfig } from '#imports'
 
 const route = useRoute();
 const router = useRouter();
@@ -153,8 +154,10 @@ async function setChapter(chapter: Chapter) {
 
   isFicLoading.value = true;
 
+  const libraryUrl: string = `${useRuntimeConfig().app.baseURL}_nuxt/assets/library/`;
+
   try {
-    const res = await fetch('/library/' + selectedFic.value.pathName + '/' + chapter.fileName);
+    const res = await fetch(libraryUrl + selectedFic.value.pathName + '/' + chapter.fileName);
     selectedChapter.value.content = await res.text();
   } catch (e) {
     console.error(e);
@@ -208,7 +211,7 @@ ul {
   font-family: "vollcorn", sans-serif;
 }
 .fanfic {
-	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 	display: grid;
 	place-content: center;
     width: 80vw;
@@ -268,8 +271,8 @@ ul {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-}
-.characters button {
+
+  button {
     border: none;
     background: none;
     font-family: 'vollcorn', sans-serif;
@@ -278,6 +281,7 @@ ul {
     transition: $baseTransition;
     display: flex;
     flex-direction: column;
+  }
 }
 
 .character-image img {
