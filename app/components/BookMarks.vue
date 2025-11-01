@@ -1,41 +1,35 @@
 <template>
     <div class="bookmarks-container">
-        <button
-            @click="bookmarksVisible = !bookmarksVisible"
-            class="show-bookmarks button">
-            Мои закладки
-        </button>
-
         <div v-show="bookmarksVisible" class="bookmarks-content">
             <Tooltip tooltipContent="Закладки добавляются кликом по абзацу и хранятся в памяти браузера.">
-                <div v-if="bookmarksStore.bookmarks.length">
-                    <div v-for="bookmark in bookmarksStore.bookmarks" class="bookmark">
-                        <a @click="goToFanfic(bookmark.fanficId)">{{ bookmark.fanficName }}, глава {{ bookmark.chapterId }}</a>
-                    </div>
-                </div>
-                <div v-else>
-                    У вас еще нет закладок
-                </div>
+              <span class="bookmarks-title">Я читаю:</span>
             </Tooltip>
+
+          <div v-for="bookmark in bookmarksStore.bookmarks" class="bookmark">
+            <a @click="goToFanfic(bookmark.fanficId)">
+              {{ bookmark.fanficName }}, глава {{ bookmark.chapterId }}
+            </a>
+          </div>
         </div>
-
     </div>
-
 </template>
 
 <script setup lang="ts">
 import Tooltip from './common/Tooltip.vue';
 import { useBookmarksStore } from '@/stores/bookmarks';
 import { fanfics } from "~/data/fanfics";
+import {useLibraryStore} from "~/stores/library";
 
 const bookmarksStore = useBookmarksStore();
-const router = useRouter()
 
-const bookmarksVisible = ref(false);
+const bookmarksVisible = bookmarksStore.bookmarks.length;
 
-function goToFanfic(fanficId) {
+function goToFanfic(fanficId: number) {
   const fanfic = fanfics.find(fanfic => fanfic.id === fanficId);
-  router.replace({ path: `/fanfic/${fanfic.pathName}`});
+  if (fanfic) {
+    useLibraryStore().selectFic(fanfic);
+    useRouter().push({ path: `/fanfic/${fanfic.pathName}`});
+  }
 }
 </script>
 
@@ -55,5 +49,9 @@ function goToFanfic(fanficId) {
 }
 .bookmarks-content {
     margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 </style>

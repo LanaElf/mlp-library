@@ -154,7 +154,10 @@ async function setChapter(chapter: Chapter) {
 
   isFicLoading.value = true;
 
-  const libraryUrl: string = `${useRuntimeConfig().app.baseURL}_nuxt/assets/library/`;
+  const baseUrl = useRuntimeConfig().app.baseURL;
+  const libraryUrl: string = baseUrl !== '/'
+      ? `${baseUrl}_nuxt/assets/library/`
+      : '/library/';
 
   try {
     const res = await fetch(libraryUrl + selectedFic.value.pathName + '/' + chapter.fileName);

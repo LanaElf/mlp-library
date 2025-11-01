@@ -22,9 +22,9 @@ import type { Bookmark, Chapter, Fanfic } from "~/types";
 import { useBookmarksStore } from "~/stores/bookmarks";
 
 const props = defineProps<{
-  ficEl: HTMLElement,
+  ficEl: HTMLElement | null,
   selectedFic: Fanfic,
-  selectedChapter: Chapter,
+  selectedChapter: Chapter | null,
   setChapterFunc: (chapter: Chapter) => Promise<void>,
 }>()
 
@@ -110,6 +110,7 @@ function makeBookmark() {
   markedEl.value = clickedEl.value;
 
   bookmarksStore.addBookmark(bookmark);
+
   findElement(bookmark);
 }
 
@@ -117,14 +118,14 @@ function getSavedBookmark() {
   const thisFicBookmark = bookmarksStore.bookmarks
       .find(bm => bm.fanficId === props.selectedFic.id);
 
-  console.log(bookmarksStore.bookmarks)
-
   if (!thisFicBookmark) return;
 
   const chapter = props.selectedFic.chapters.find(ch => ch.id === thisFicBookmark.chapterId);
   if (chapter) {
-    props.setChapterFunc(chapter).then(() => {
-      findElement(thisFicBookmark);
+    nextTick(() => {
+      props.setChapterFunc(chapter).then(() => {
+        findElement(thisFicBookmark);
+      });
     });
   }
 }

@@ -156,6 +156,10 @@
                     color: #bccdd8;
                     transition: $baseTransition;
 
+                    &.active {
+                        color: $lunaThemeColor5;
+                    }
+
                     &:hover {
                         color: $lunaThemeColor6;
                     }

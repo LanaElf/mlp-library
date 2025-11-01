@@ -120,6 +120,10 @@
                     color: $twilightThemeColor3;
                     transition: $baseTransition;
 
+                    &.active {
+                        color: $twilightThemeColor6;
+                    }
+
                     &:hover {
                         color: $twilightThemeColor1;
                     }
