@@ -252,23 +252,14 @@ a, button {
   .header {
     height: auto;
   }
-  .lunaHeader {
-    height: 480px;
-  }
   .title-image {
     height: 80px;
-  }
-  .fluttershyHeader .title {
-    padding-bottom: 20px;
   }
   .header-image {
     max-width: 80%;
   }
-  .twilightHeader div.header-image {
-    height: 250px;
-  }
-  .lunaHeader div.header-image {
-    max-width: 100vw;
+  .header-image {
+    max-height: 250px;
   }
 
   .bookshelf-container{
@@ -281,7 +272,7 @@ a, button {
   }
   .bookshelf{
     max-width: 100vw !important;
-    margin: 10px !important;
+    margin: 30px 10px !important;
     justify-content: center;
   }
   .bookshelf li{
@@ -304,9 +295,9 @@ a, button {
   .author{
     padding-bottom: 10px;
   }
-  .title{
+  .title h1 {
     font-size: 1.3em !important;
-    width: 95vw;
+    max-width: 95vw;
   }
   .fanfic > li > span > h2{
     font-size: 1.2em;
