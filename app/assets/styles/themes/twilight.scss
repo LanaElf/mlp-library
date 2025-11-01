@@ -1,0 +1,162 @@
+.twilightTheme {
+    .themeTextColor1 { color: $twilightThemeColor1 }
+    .themeTextColor2 { color: $twilightThemeColor2 }
+    .themeTextColor3 { color: $twilightThemeColor3 }
+    .themeTextColor4 { color: $twilightThemeColor4 }
+    .themeTextColor5 { color: $twilightThemeColor5 }
+    .themeTextColor6 { color: $twilightThemeColor6 }
+
+    .themeBackground1 { background-color: $twilightThemeColor1 }
+    .themeBackground2 { background-color: $twilightThemeColor2 }
+    .themeBackground3 { background-color: $twilightThemeColor3 }
+    .themeBackground4 { background-color: $twilightThemeColor4 }
+    .themeBackground5 { background-color: $twilightThemeColor5 }
+    .themeBackground6 { background-color: $twilightThemeColor6 }
+
+    header, footer {
+        background: radial-gradient(circle, $twilightThemeColor1 20%, $twilightThemeColor3);
+    }
+
+    input {
+        border-color: $twilightThemeColor3;
+
+        &:focus-visible {
+            outline-color: $twilightThemeColor1;
+        }
+    }
+
+    .header-image{
+    	background-image: url('@/assets/arts/twilight_reading.gif');
+    	width: 350px;
+    	height: 380px;
+    	z-index: 1;
+    }
+
+    .theme-switch {
+       .icon {
+    	    fill: $twilightThemeColor5;
+        }
+    }
+
+    .library-link {
+        background: $twilightThemeColor3;
+    }
+
+    .bookshelf {
+        color: $twilightThemeColor3;
+
+        .book-title {
+            color: #fff;
+            background: $twilightThemeColor2;
+            transition: $baseTransition;
+
+            &:hover {
+                color: #fff;
+                background: $twilightThemeColor3;
+            }
+        }
+    }
+
+    .main {
+        background-image: linear-gradient(
+            to top,
+            rgba(240, 235, 255,0.7),
+            rgba(240, 235, 255,0.7)),
+            url('@/assets/arts/backgrounds/twilight_background.png');
+        background-size: 300px;
+    }
+
+    .main, footer {
+        button, a, label {
+            color: $twilightThemeColor6;
+            transition: $baseTransition;
+
+            &.button {
+                color: $twilightThemeColor2;
+                border-color: $twilightThemeColor2;
+                background: #fff;
+
+                &:hover {
+	                background: $twilightThemeColor5;
+                    color: $twilightThemeColor2;
+                }
+            }
+
+            &:hover {
+	            color: $twilightThemeColor1;
+
+                img {
+                    filter: drop-shadow(0px 0px 3px $twilightThemeColor1);
+                }
+            }
+
+            &.selected {
+                background: $twilightThemeColor6;
+
+                img {
+                    filter:
+                        drop-shadow(0px 0px 3px $twilightThemeColor1)
+                        drop-shadow(0px 0px 6px $twilightThemeColor1);
+                }
+            }
+        }
+    }
+
+    .selected-filter {
+	    color: $twilightThemeColor1;
+    }
+
+    .fanfic {
+        .title {
+            color: $twilightThemeColor3;
+        }
+
+        .fanfic-info {
+            color: $twilightThemeColor3;
+            transition: $baseTransition;
+
+            .fanfic-nav {
+                a {
+                    color: $twilightThemeColor3;
+                    transition: $baseTransition;
+
+                    &:hover {
+                        color: $twilightThemeColor1;
+                    }
+                }
+            }
+
+        }
+
+        .clicked-el {
+            background-color: $twilightThemeColor5;
+        }
+
+        .marked-el {
+            &::after {
+                background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23e6458b" d="M17,3A2,2 0 0,1 19,5V21L12,18L5,21V5A2,2 0 0,1 7,3H17Z"/></svg>');
+            }
+        }
+    }
+
+    .next-chapter a {
+        color: $twilightThemeColor3;
+        border-color: $twilightThemeColor3;
+        background-color: $twilightThemeColor5;
+        transition: $baseTransition;
+
+        &:hover {
+            color: $twilightThemeColor3;
+            background-color: $twilightThemeColor6;
+        }
+    }
+
+    .preloader span, .contacts {
+        color: $twilightThemeColor3;
+    }
+
+    .tooltip-content {
+        color: $twilightThemeColor2;
+        border-color: $twilightThemeColor2;
+    }
+}

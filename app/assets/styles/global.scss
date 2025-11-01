@@ -1,0 +1,328 @@
+@font-face{
+  font-family: "celestia";
+  src: url('../fonts/celestiareduxmedium.ttf');
+}
+@font-face{
+  font-family: "vollcorn";
+  src: url('../fonts/Vollkorn-Medium.ttf');
+}
+
+:root {
+  scroll-behavior: smooth;
+  cursor: default;
+  font-family: "vollcorn", sans-serif;
+  text-align: center;
+  color: #2c3e50;
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+}
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.main {
+  display: grid;
+  place-content: center;
+  background-size: 500px;
+  padding-bottom: 14px;
+  z-index: 2;
+  position: relative;
+  background-attachment: fixed;
+  scroll-behavior: smooth;
+}
+
+input {
+  font-size: 17px;
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-family: "vollcorn", sans-serif;
+  border-width: 2px;
+  border-style: solid;
+}
+
+ul{
+  padding: 10px 0;
+  list-style-type: none;
+}
+li{
+  padding-bottom: 10px;
+}
+
+.flex {
+  display: flex;
+}
+
+.button {
+  border-radius: 20px;
+  font-family: 'vollcorn', sans-serif;
+}
+
+a, button {
+  cursor: pointer;
+}
+
+.theme-switch {
+  cursor: pointer;
+
+  .fluttershyTheme {
+      color: $fluttershyThemeColor3;
+      background: $fluttershyThemeColor2;
+  }
+  .twilightTheme {
+      color: $twilightThemeColor3;
+      background: $twilightThemeColor6;
+  }
+  .celestiaTheme {
+      color: #fff;
+      background: $celestiaThemeColor4;
+  }
+  .lunaTheme {
+      color: $lunaThemeColor3;
+      background: $lunaThemeColor1;
+  }
+}
+
+.chapter-html {
+  h2 {
+    text-align: center;
+  }
+
+  p {
+    line-height: 1.5em;
+    font-size: 1em;
+  }
+
+  p::first-letter{
+      padding-left: 40px;
+  }
+
+  blockquote {
+      font-style: italic;
+  }
+
+  br {
+      line-height: 5px;
+  }
+
+  img {
+      max-width: 100%;
+      height: auto;
+      justify-self: center;
+  }
+}
+
+.clicked-el {
+    transition: $baseTransition;
+}
+
+.marked-el {
+  position: relative;
+}
+
+.marked-el::after {
+  content: "";
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  vertical-align: middle;
+  margin-left: 0.3em;
+  background-repeat: no-repeat;
+  background-position: center/contain;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M17,3A2,2 0 0,1 19,5V21L12,18L5,21V5A2,2 0 0,1 7,3H17Z"/></svg>');
+  transform: rotate(-90deg) translate(50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: -7%;
+}
+
+.fanfic {
+  background: $lightPaper;
+}
+
+.dropdown-menu {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 1200px) {
+  .marked-el::after {
+    left: -8%;
+  }
+}
+
+.stars {
+  display: none;
+
+  &.lunaTheme {
+    display: block;
+  }
+}
+
+.genres {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+}
+
+.genres li {
+    padding-block: 1px;
+}
+
+.genres a {
+	text-shadow: none;
+	background: white;
+	border-width: 1px;
+	border-style: solid;
+	font-size: 1em;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: $baseTransition;
+	padding: 0 5px;
+}
+
+.characters {
+    padding: 0;
+    margin: 0;
+}
+
+.characters .character-image img {
+    transition: $baseTransition;
+}
+
+.btn {
+	font-family: "vollcorn";
+	background: teal;
+	color: white;
+	border: none;
+	text-decoration: none;
+	padding: 10px 20px;
+	border-radius: 20px;
+	box-shadow: 0px 2px 5px #ddd;
+	font-size: 17px;
+    transition: $baseTransition;
+
+    &:hover {
+        background: #005067;
+    }
+}
+
+.preloader{
+  display: grid;
+  place-content: center;
+}
+.preloader img{
+  height: 200px;
+  width: auto;
+}
+.preloader span{
+  font-size: 18px;
+  margin-bottom: 50px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+@media (max-device-width: 800px) and (-webkit-min-device-pixel-ratio: 2.5),
+        (max-device-width: 800px) and (min--moz-device-pixel-ratio: 2.5),
+        (max-device-width: 800px) and (-o-min-device-pixel-ratio: 2.5),
+        (max-device-width: 800px) and (-ms-min-device-pixel-ratio: 2.5),
+        (max-device-width: 800px) and (min-device-pixel-ratio: 2.5),
+        (max-device-width: 600px) and (-webkit-min-device-pixel-ratio: 2),
+        (max-device-width: 600px) and (min--moz-device-pixel-ratio: 2),
+        (max-device-width: 600px) and (-o-min-device-pixel-ratio: 2),
+        (max-device-width: 600px) and (-ms-min-device-pixel-ratio: 2),
+        (max-device-width: 600px) and (min-device-pixel-ratio: 2) {
+
+  .header {
+    height: auto;
+  }
+  .lunaHeader {
+    height: 480px;
+  }
+  .title-image {
+    height: 80px;
+  }
+  .fluttershyHeader .title {
+    padding-bottom: 20px;
+  }
+  .header-image {
+    max-width: 80%;
+  }
+  .twilightHeader div.header-image {
+    height: 250px;
+  }
+  .lunaHeader div.header-image {
+    max-width: 100vw;
+  }
+
+  .bookshelf-container{
+    width: 100% !important;
+    justify-items: center;
+  }
+  .search{
+    width: 80%;
+    height: 2em;
+  }
+  .bookshelf{
+    max-width: 100vw !important;
+    margin: 10px !important;
+    justify-content: center;
+  }
+  .bookshelf li{
+    max-width: 100vw !important;
+    justify-items: center;
+  }
+
+  .genres {
+      gap: 5px;
+  }
+
+  .genres button{
+    font-size: 14px !important;
+  }
+  .library-page{
+    width: 100vw;
+    display: grid;
+    justify-items: center;
+  }
+  .author{
+    padding-bottom: 10px;
+  }
+  .title{
+    font-size: 1.3em !important;
+    width: 95vw;
+  }
+  .fanfic > li > span > h2{
+    font-size: 1.2em;
+  }
+  .fanfic p{
+    font-size: 1em;
+  }
+  .fanfic{
+    justify-items: center;
+    width: 100vw;
+    box-shadow: none !important;
+  }
+  .fic-view{
+    width: 100% !important;
+    margin: 0 !important;
+
+  }
+  .fic-content{
+    width: 90vw;
+  }
+  footer{
+    height: auto;
+    padding: 30px 20px;
+  }
+
+  .marked-el::after {
+    left: -5%;
+  }
+}

@@ -1,0 +1,182 @@
+.celestiaTheme {
+    .themeTextColor1 { color: $celestiaThemeColor1 }
+    .themeTextColor2 { color: $celestiaThemeColor2 }
+    .themeTextColor3 { color: $celestiaThemeColor3 }
+    .themeTextColor4 { color: $celestiaThemeColor4 }
+    .themeTextColor5 { color: $celestiaThemeColor5 }
+    .themeTextColor6 { color: $celestiaThemeColor6 }
+
+    .themeBackground1 { background-color: $celestiaThemeColor1 }
+    .themeBackground2 { background-color: $celestiaThemeColor2 }
+    .themeBackground3 { background-color: $celestiaThemeColor3 }
+    .themeBackground4 { background-color: $celestiaThemeColor4 }
+    .themeBackground5 { background-color: $celestiaThemeColor5 }
+    .themeBackground6 { background-color: $celestiaThemeColor6 }
+
+    header, footer {
+        background: radial-gradient(circle, $celestiaThemeColor1 20%, $celestiaThemeColor4 100%);
+        background-position: center;
+        animation: shining ease-in-out 1s alternate infinite;
+    }
+
+    @keyframes shining {
+        from {
+            background-size: 100%;
+        }
+        to {
+            background-size: 120%;
+        }
+    }
+
+    input {
+        border-color: $celestiaThemeColor3;
+
+        &:focus-visible {
+            outline-color: $celestiaThemeColor4;
+        }
+    }
+
+    .header-image{
+    	background-image: url('@/assets/arts/celestia_reading.png');
+    	width: 330px;
+    	height: 265px;
+    	position: relative;
+    	top: -10px;
+    }
+
+    .theme-switch {
+       .icon {
+    	    fill: $celestiaThemeColor1;
+        }
+    }
+
+    .library-link {
+        background: $celestiaThemeColor4;
+    }
+
+    .bookshelf {
+        color: $celestiaThemeColor6;
+
+        .book-title {
+            color: #fff;
+            background: $celestiaThemeColor3;
+            transition: $baseTransition;
+
+            &:hover {
+                color: #fff;
+                background: $celestiaThemeColor4;
+            }
+        }
+    }
+
+    .main {
+        background-image: linear-gradient(
+            to top,
+            rgba(255, 255, 255,0.7),
+            rgba(255, 255, 255,0.7)),
+            url('@/assets/arts/backgrounds/celestia_background.png');
+        background-size: 200px;
+    }
+
+    .main, footer {
+        button, a, label {
+            color: $celestiaThemeColor5;
+            transition: $baseTransition;
+
+            &.button {
+                color: $celestiaThemeColor6;
+                border-color: $celestiaThemeColor6;
+                background: #fff;
+
+                &:hover {
+	                background: $celestiaThemeColor1;
+                    color: $celestiaThemeColor6;
+                }
+            }
+
+            &:hover {
+	            color: $celestiaThemeColor2;
+
+                img {
+                    filter: drop-shadow(0px 0px 3px $celestiaThemeColor2);
+                }
+            }
+
+            &.selected {
+                background: $celestiaThemeColor2;
+
+                img {
+                    filter:
+                        drop-shadow(0px 0px 3px $celestiaThemeColor2)
+                        drop-shadow(0px 0px 6px $celestiaThemeColor2);
+                }
+            }
+        }
+    }
+
+    label {
+        color: $celestiaThemeColor6;
+    }
+
+    .selected-filter {
+    	color: $celestiaThemeColor6;
+    }
+
+    .fanfic {
+        .title {
+            color: $celestiaThemeColor6;
+        }
+
+        .fanfic-info {
+            color: $celestiaThemeColor4;
+            transition: $baseTransition;
+
+            .fanfic-nav {
+                a {
+                    color: #000;
+                    transition: $baseTransition;
+
+                    &.active {
+                        color: $celestiaThemeColor5;
+                    }
+
+                    &:hover {
+                        color: $celestiaThemeColor2;
+                    }
+                }
+            }
+
+        }
+
+        .clicked-el {
+            background-color: $celestiaThemeColor1;
+        }
+
+        .marked-el {
+            &::after {
+                background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23d694d5" d="M17,3A2,2 0 0,1 19,5V21L12,18L5,21V5A2,2 0 0,1 7,3H17Z"/></svg>');
+            }
+        }
+    }
+
+    .next-chapter a {
+        color: $celestiaThemeColor4;
+        border-color: $celestiaThemeColor4;
+        background-color: $celestiaThemeColor1;
+        transition: $baseTransition;
+
+        &:hover {
+            color: $celestiaThemeColor4;
+            background-color: $celestiaThemeColor2;
+        }
+    }
+
+    .preloader span, .contacts {
+        color: $celestiaThemeColor6;
+    }
+
+    .tooltip-content {
+        color: $celestiaThemeColor4;
+        border-color: $celestiaThemeColor4;
+    }
+}
