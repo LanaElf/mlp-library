@@ -47,7 +47,7 @@ jobs:
       - name: Copy assets to build
         run: |
           mkdir -p .output/public/_nuxt/assets
-          cp -r assets/* .output/public/_nuxt/assets/ || true
+          cp -r app/assets/* .output/public/_nuxt/assets/ || true
 
       - name: Upload to GitHub Pages
         uses: actions/upload-pages-artifact@v3
