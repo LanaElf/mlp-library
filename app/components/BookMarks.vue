@@ -1,7 +1,7 @@
 <template>
     <div class="bookmarks-container">
         <div v-show="bookmarksStore.bookmarks.length" class="bookmarks-content">
-            <Tooltip tooltipContent="Закладки добавляются кликом по абзацу и хранятся в памяти браузера.">
+            <Tooltip tooltipContent="Закладки добавляются и удаляются кликом по абзацу и хранятся в памяти браузера.">
               <span class="bookmarks-title">Я читаю:</span>
             </Tooltip>
 

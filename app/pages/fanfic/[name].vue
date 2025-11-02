@@ -333,8 +333,8 @@ ul {
 (max-device-width: 600px) and (min--moz-device-pixel-ratio: 2),
 (max-device-width: 600px) and (min-device-pixel-ratio: 2){
     .fanfic {
-        width: 100%;
-        padding: 0 1em;
+      width: calc(100% - 2em);
+      padding: 0 1em;
     }
     .chapter-html {
         p {
