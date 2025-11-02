@@ -28,7 +28,7 @@ const tooltipVisible = ref(false);
 }
 .tooltip {
     position: absolute;
-    top: -20px;
+    top: -15px;
     right: -20px;
 }
 .tooltip-button {

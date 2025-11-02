@@ -1,5 +1,9 @@
 <template>
   <div ref="ficView" class="fic-view">
+    <div class="bookmarks-fic">
+      <BookMarks />
+    </div>
+
      <div id="fanfic" class="fanfic">
             <div class="fanfic-info">
                 <div class="title">
@@ -212,6 +216,7 @@ ul {
 	display: flex;
 	place-content: center;
   font-family: "vollcorn", sans-serif;
+  flex-direction: column;
 }
 .fanfic {
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -318,6 +323,9 @@ ul {
     font-weight: bolder;
 }
 
+.bookmarks-fic {
+  padding: 1em;
+}
 @media (max-device-width: 800px) and (-webkit-min-device-pixel-ratio: 2.5),
 (max-device-width: 800px) and (min--moz-device-pixel-ratio: 2.5),
 (max-device-width: 800px) and (min-device-pixel-ratio: 2.5),

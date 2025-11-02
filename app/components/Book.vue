@@ -7,7 +7,7 @@
 			  <div class="book-info">
             <ul class="characters">
     	  			  <li v-for="character in fanfic.characters">
-                		<a href="#bookshelf"
+                		<a href="#filters"
                 	      @click="libraryStore.selectCharacter(character)"
                         :class="libraryStore.selectedCharacters.has(character) ? 'selected' : ''">
     	  			  		<div class="character-image">
@@ -70,7 +70,7 @@ function selectFic(fanfic: Fanfic) {
 .book-like {
   margin-top: 20px;
 	background: rgba(255, 255, 255, 0.3);
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 	display: flex;
   place-content: center;
   flex-direction: column;

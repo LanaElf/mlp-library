@@ -1,15 +1,21 @@
 <template>
     <div class="bookmarks-container">
-        <div v-show="bookmarksVisible" class="bookmarks-content">
+        <div v-show="bookmarksStore.bookmarks.length" class="bookmarks-content">
             <Tooltip tooltipContent="Закладки добавляются кликом по абзацу и хранятся в памяти браузера.">
               <span class="bookmarks-title">Я читаю:</span>
             </Tooltip>
 
-          <div v-for="bookmark in bookmarksStore.bookmarks" class="bookmark">
-            <a @click="goToFanfic(bookmark.fanficId)">
+          <div class="bookmarks">
+            <a v-for="bookmark in bookmarksStore.bookmarks"
+               @click="goToFanfic(bookmark.fanficId)"
+               class="bookmark">
               {{ bookmark.fanficName }}, глава {{ bookmark.chapterId }}
             </a>
           </div>
+        </div>
+
+        <div v-show="!bookmarksStore.bookmarks.length" class="bookmark-announce">
+          Читая фанфик, жми на абзац, чтобы создать закладку. Закладки будут храниться в памяти браузера и выводиться здесь.
         </div>
     </div>
 </template>
@@ -21,8 +27,6 @@ import { fanfics } from "~/data/fanfics";
 import {useLibraryStore} from "~/stores/library";
 
 const bookmarksStore = useBookmarksStore();
-
-const bookmarksVisible = bookmarksStore.bookmarks.length;
 
 function goToFanfic(fanficId: number) {
   const fanfic = fanfics.find(fanfic => fanfic.id === fanficId);
@@ -39,6 +43,7 @@ function goToFanfic(fanficId: number) {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+  font-size: 1.1em;
 }
 .show-bookmarks {
     width: max-content;
@@ -53,5 +58,15 @@ function goToFanfic(fanficId: number) {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+.bookmark-announce {
+  display: flex;
+  max-width: 600px;
+}
+.bookmarks {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin: 1em;
 }
 </style>
