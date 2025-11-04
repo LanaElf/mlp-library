@@ -1,6 +1,17 @@
 <template>
-  <div class="filters-container">
+  <div id="filters" class="filters-container">
   <div v-show="!libraryStore.noFilter" class="filter-items selected-filter">Фильтры:</div>
+
+    <div v-show="libraryStore.selectedAuthor" class="selected-filter">
+      <div class="filter-items resetBtnContainer">
+          <span>{{ libraryStore.selectedAuthor }}</span>
+          <button
+              class="reset-filter x button"
+              @click="libraryStore.resetAuthorFromFilter()">
+            Х
+          </button>
+      </div>
+    </div>
 
   <div v-show="libraryStore.isGenresFilter" class="selected-filter">
     <div class="filter-items">
@@ -18,7 +29,7 @@
 
   <div v-show="libraryStore.isCharactersFilter"
        class="selected-filter">
-    <div class="filter-items">
+    <div class="filter-items characters">
       <div v-for="character in libraryStore.selectedCharacters"
            class="selected-character">
         <div class="character-image">
@@ -65,10 +76,12 @@ const libraryStore = useLibraryStore();
   position: relative;
   width: max-content;
   font-family: 'vollcorn', sans-serif;
+
+  .character-image img {
+    height: 6em;
+  }
 }
-.character-image img {
-  height: 7em;
-}
+
 
 .reset-filter{
   border-width: 1px;

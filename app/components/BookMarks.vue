@@ -26,6 +26,8 @@ import { useBookmarksStore } from '@/stores/bookmarks';
 import { fanfics } from "~/data/fanfics";
 import {useLibraryStore} from "~/stores/library";
 
+const emit = defineEmits(['goToBookmark']);
+
 const bookmarksStore = useBookmarksStore();
 
 function goToFanfic(fanficId: number) {
@@ -33,6 +35,7 @@ function goToFanfic(fanficId: number) {
   if (fanfic) {
     useLibraryStore().selectFic(fanfic);
     useRouter().push({ path: `/fanfic/${fanfic.pathName}`});
+    emit('goToBookmark');
   }
 }
 </script>

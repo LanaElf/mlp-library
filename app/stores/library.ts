@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { fanfics, characters } from '~/data/fanfics'
-import type { Fanfic } from '~/types';
+import type {Character, Fanfic} from '~/types';
 import { useRuntimeConfig } from '#imports'
 import type { Reactive } from "vue";
 
@@ -10,6 +10,7 @@ export const useLibraryStore = defineStore('library', () => {
 
     let selectedGenres: Reactive<Set<string>> = reactive(new Set([]))
     let selectedCharacters: Reactive<Set<string>> = reactive(new Set([]))
+    const selectedAuthor: Ref<string | null> = ref(null)
 
     const isCharactersFilter = computed(() => {
         return selectedCharacters.size !== 0
@@ -21,7 +22,7 @@ export const useLibraryStore = defineStore('library', () => {
 
     const noFilter = computed(() => {
         return selectedCharacters.size === 0
-            && selectedGenres.size === 0
+            && selectedGenres.size === 0 && !selectedAuthor.value
     })
 
     const filteredFics = computed(() => {
@@ -29,6 +30,12 @@ export const useLibraryStore = defineStore('library', () => {
 
         if (noFilter.value) {
             return filteredFics
+        }
+
+        if (selectedAuthor.value) {
+            filteredFics = filteredFics.filter(fanfic =>
+                fanfic.authorName === selectedAuthor.value
+            )
         }
 
         filteredFics = filteredFics.filter(fanfic =>
@@ -58,9 +65,14 @@ export const useLibraryStore = defineStore('library', () => {
         selectedCharacters.add(character);
     }
 
+    function selectAuthor(author: string) {
+        selectedAuthor.value = author;
+    }
+
     function resetFilters() {
         selectedGenres.clear();
         selectedCharacters.clear();
+        selectedAuthor.value = null;
     }
 
     function resetGenreFromFilter(genre: string) {
@@ -69,6 +81,10 @@ export const useLibraryStore = defineStore('library', () => {
 
     function resetCharacterFromFilter(character: string) {
         selectedCharacters.delete(character);
+    }
+
+    function resetAuthorFromFilter() {
+        selectedAuthor.value = null;
     }
 
     const charactersUrl: string = `${useRuntimeConfig().app.baseURL}_nuxt/assets/arts/ponies/`;
@@ -89,13 +105,16 @@ export const useLibraryStore = defineStore('library', () => {
         selectFic,
         selectedGenres,
         selectedCharacters,
+        selectedAuthor,
         selectGenre,
         selectCharacter,
+        selectAuthor,
         isCharactersFilter,
         isGenresFilter,
         resetFilters,
         resetGenreFromFilter,
         resetCharacterFromFilter,
+        resetAuthorFromFilter,
         filteredFics,
         noFilter,
         getCharacterImagePath,

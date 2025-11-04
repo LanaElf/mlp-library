@@ -1,7 +1,7 @@
 <template>
   <div ref="ficView" class="fic-view">
     <div class="bookmarks-fic">
-      <BookMarks />
+      <BookMarks @go-to-bookmark="goToBookmark"/>
     </div>
 
      <div id="fanfic" class="fanfic">
@@ -48,19 +48,13 @@
                     <a v-for="chapter in selectedFic.chapters"
                         :key="chapter.id"
                         class="nav-link"
-                        :class="selectedChapter === chapter ? 'active' : ''"
+                        :class="{active: selectedChapter === chapter}"
                         href="#chapter"
                         @click="setChapter(chapter)"
                         >
                         {{ chapter.name }}
                     </a>
                 </nav>
-
-                <!--<div class="sourceLink">
-                  <a :href="selectedFic.sourceLink" target="_blank">
-                    Открыть в источнике
-                  </a>
-                </div>-->
             </div>
 
             <div id="chapter">
@@ -84,19 +78,21 @@
       </div>
 
       <BookmarkMaker
+          v-model="markedEl"
           :fic-el="ficView"
           :selected-fic="selectedFic"
           :selected-chapter="selectedChapter"
-          :set-chapter-func="setChapter"/>
+          />
 
       <GoUpBtn />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, onMounted } from 'vue';
+import {ref, computed, onMounted, watch} from 'vue';
 import { useLibraryStore } from '~/stores/library';
-import type { Fanfic, Chapter } from '~/types'
+import { useBookmarksStore } from '~/stores/bookmarks';
+import type {Fanfic, Chapter, Bookmark} from '~/types'
 import { fanfics } from '~/data/fanfics'
 import Preloader from "~/components/common/Preloader.vue";
 import BookmarkMaker from "~/components/BookmarkMaker.vue";
@@ -105,6 +101,7 @@ import { useRuntimeConfig } from '#imports'
 const route = useRoute();
 const router = useRouter();
 const libraryStore = useLibraryStore();
+const bookmarksStore = useBookmarksStore();
 
 const isFicLoading = ref(false);
 const selectedChapter = ref<Chapter | null>(null);
@@ -112,6 +109,7 @@ const isTheLastChapter = ref(false);
 const isTheFirstChapter = ref(true);
 
 const ficView = ref<HTMLElement | null>(null);
+const markedEl = ref<HTMLElement | null>(null);
 
 const chapterHtml = computed(() => {
   if (!selectedChapter.value) {
@@ -126,8 +124,23 @@ const selectedFic = computed<Fanfic>(() => {
       || (fanfics as Fanfic[]).find((f) => f.pathName === route.params.name);
 });
 
+watch(selectedFic, (newFic) => {
+  router.push({
+    path: `/fanfic/${newFic.pathName}`
+  })
+})
+
+watch(markedEl, (newEl, oldEl) => {
+  oldEl?.classList.remove('marked-el');
+  newEl?.classList.add('marked-el');
+})
+
 function goToLibrary() {
   router.push({ path: `/`, hash: '#filters' });
+}
+
+function goToBookmark() {
+  getSavedBookmark()
 }
 
 function selectGenre(genre: string) {
@@ -199,8 +212,50 @@ function previousChapter() {
   }
 }
 
+function getSavedBookmark() {
+  const thisFicBookmark = bookmarksStore.bookmarks
+      .find(bm => bm.fanficId === selectedFic.value.id);
+
+  if (thisFicBookmark) {
+    const chapter = selectedFic.value.chapters.find(ch => ch.id === thisFicBookmark.chapterId);
+    if (!chapter) {
+      console.error(
+          `Chapter with id ${thisFicBookmark.chapterId} not found in fanfic ${selectedFic.value.name}`
+      )
+      return;
+    }
+    setChapter(chapter).then(() => {
+      findElement(thisFicBookmark);
+    });
+  } else {
+    setFirstChapter();
+  }
+}
+
+function findElement(bookmark: Bookmark) {
+  const chapter = document.querySelector('#chapterContent');
+  if (!chapter) return;
+
+  const elements = Array.from(chapter.querySelectorAll('*'))
+      .filter(el => el instanceof HTMLElement) as HTMLElement[];
+
+  let el: HTMLElement | undefined;
+
+  if (bookmark.contentType === 'src') {
+    el = chapter.querySelector(`[src="${bookmark.content}"]`) as HTMLElement | undefined;
+  } else {
+    el = elements.find(el => el.textContent?.includes(bookmark.content) ?? false);
+  }
+
+  if (el) {
+    markedEl.value = el;
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+
 onMounted(() => {
-  setFirstChapter();
+  console.log('mounted')
+  getSavedBookmark();
 });
 </script>
 

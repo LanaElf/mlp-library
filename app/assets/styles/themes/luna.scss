@@ -121,12 +121,13 @@
 
         .characters {
             img {
-                filter: drop-shadow(0px 0px 1px $lunaThemeColor6) drop-shadow(0px 0px 3px $lunaThemeColor6);
+                filter: drop-shadow(0px 0px 1px $lunaThemeColor6)
+                        drop-shadow(0px 0px 3px $lunaThemeColor6);
             }
         }
     }
 
-    .selected-filter, .tooltip-container {
+    .selected-filter, .tooltip-container, .bookmarks-container {
     	color: $lunaThemeColor3;
     }
 
