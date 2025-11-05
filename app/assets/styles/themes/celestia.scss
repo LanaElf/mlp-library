@@ -114,11 +114,7 @@
         }
     }
 
-    label {
-        color: $celestiaThemeColor6;
-    }
-
-    .selected-filter, .tooltip-container {
+    label, .bookmarks-container, .selected-filter, .tooltip-container {
     	color: $celestiaThemeColor6;
     }
 

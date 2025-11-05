@@ -15,7 +15,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-	padding: 30px;
+	padding: 50px;
 
   a {
     text-decoration: none;
