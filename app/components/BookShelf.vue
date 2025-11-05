@@ -2,7 +2,12 @@
     <div id="bookshelf" class="bookshelf">
       <BookMarks />
 
-      <div class="selects">
+      <div class="filters">
+        <SelectOne
+            v-model="libraryStore.selectedAuthor"
+            :options="authorsForSelect"
+            placeholder="Автор" />
+
 		    <SelectMultiple
             @changeSelected="onChangeSelectedGenres"
             :options="genresForSelect"
@@ -16,6 +21,8 @@
             placeholder="Персонажи" />
         </div>
 
+        <Filters />
+
         <div class="sort-by-words-count">
           <span>Сортировать:</span>
           <button @click="changeSortBy" class="button">{{ sortBy }}</button>
@@ -25,10 +32,6 @@
         <input id="search" class="search"
              v-model.trim="searchQuery"
              placeholder="Поиск по названию...">
-
-        <div id="filters">
-          <Filters />
-        </div>
 
         <div id="books" v-show="filteredSortedAndSearchedFics.length > 0">
           <Book v-for="fanfic in filteredSortedAndSearchedFics"
@@ -45,8 +48,9 @@
 <script setup lang="ts">
 import SelectMultiple from '~/components/common/SelectMultiple.vue'
 import { useLibraryStore } from '~/stores/library'
-import { genres, characters } from '~/data/fanfics'
+import { genres, characters, authors } from '~/data/fanfics'
 import type { Fanfic } from '~/types'
+import SelectOne from "~/components/common/SelectOne.vue";
 
 const libraryStore = useLibraryStore()
 
@@ -97,6 +101,13 @@ function changeSortFrom() {
   sortFrom.value = sortFrom.value === 'min' ? 'max' : 'min'
 }
 
+const authorsForSelect = Array.from(authors).map((author) => {
+  return {
+    label: author,
+    value: author,
+  }
+})
+
 const genresForSelect = Array.from(genres).map((genre) => {
   return {
     label: genre,
@@ -139,11 +150,11 @@ function onChangeSelectedCharacters(payload: { checked: boolean; value: string }
 	justify-content: stretch;
 }
 
-.selects {
+.filters {
   display: flex;
   flex-direction: column;
   gap: 1em;
-  padding-block: 1em;
+  padding-top: 1em;
 }
 
 .search {

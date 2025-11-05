@@ -31,7 +31,8 @@
             <div class="book-row">
                 <div class="author">
          	 	  	  Автор:
-          	  	  <a :href="fanfic.authorLink" 	target="_blank">
+          	  	  <a href="#filters"
+                     @click="libraryStore.selectAuthor(fanfic.authorName)">
                     {{ fanfic.authorName }}
           	  	  </a>
     	  		    </div>

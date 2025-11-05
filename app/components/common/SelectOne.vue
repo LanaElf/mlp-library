@@ -1,22 +1,24 @@
 <template>
-  <div class="select-multiple">
+  <div class="select">
     <button
         @click="isOpen = !isOpen"
         class="dropdown-btn button"
         :class="{open: isOpen}">
       {{ placeholder }}
     </button>
+
     <div v-show="isOpen" class="dropdown-menu">
       <label
           v-for="option in options"
           :key="option.value"
           class="dropdown-item button"
-          :class="{selected: isSelected(option.value)}">
+          :class="{selected: option.value === model}">
         <input
-            type="checkbox"
+            v-model="model"
+            type="radio"
             :value="option.value"
-            :checked="isSelected(option.value)"
-            @change="(e) => { changeSelected(e, option.value) }"
+            :checked="option.value === model"
+            @click="isOpen = false"
         />
         {{ option.label }}
       </label>
@@ -25,50 +27,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, defineEmits } from 'vue'
+import { ref, defineProps } from 'vue'
+
+const model = defineModel()
 
 const props = defineProps<{
   options: { value: string, label: string }[],
-  selected: Set<string>,
   placeholder?: string
 }>()
 
-const emit = defineEmits<{(
-    e: 'changeSelected',
-    payload: { checked: boolean; value: string }
-): void }>()
-
-const selected = ref<string[]>([])
-
-function changeSelected(event: Event, value: string) {
-  const target = event.target as HTMLInputElement
-
-  if (target) {
-    const checked: boolean = target.checked;
-
-    emit('changeSelected', { checked, value });
-
-    if (checked) {
-      selected.value.push(value)
-    } else {
-      selected.value = selected.value.filter((item) => {
-        return item !== value
-      })
-    }
-  }
-}
-
 const isOpen = ref(false)
 
-const placeholder = props.placeholder ?? 'Выбрать значения'
+const placeholder = props.placeholder ?? 'Выбрать значение'
 
-function isSelected(value: string) {
-    return props.selected.has(value)
-}
 </script>
 
 <style scoped lang="scss">
-.select-multiple {
+.select {
   position: relative;
   display: flex;
   flex-direction: column;
