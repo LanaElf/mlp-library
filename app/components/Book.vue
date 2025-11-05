@@ -1,4 +1,5 @@
 <template>
+  <client-only>
     <div class="book-like">
 			  <button class="btn book-title" @click="selectFic(fanfic)">
 			  	{{ fanfic.name }}
@@ -46,6 +47,7 @@
             </div>
 			  </div>
 		</div>
+  </client-only>
 </template>
 
 <script setup lang="ts">
