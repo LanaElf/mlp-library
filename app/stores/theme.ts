@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 
 export const useThemeStore = defineStore('theme', () => {
-    const activeTheme = ref('fluttershyTheme');
+    const activeTheme = ref('lunaTheme');
     const themes = [
         {
             name: 'Fluttershy',

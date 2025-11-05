@@ -9,7 +9,7 @@
     	  			  <li v-for="character in fanfic.characters">
                 		<a href="#filters"
                 	      @click="libraryStore.selectCharacter(character)"
-                        :class="libraryStore.selectedCharacters.has(character) ? 'selected' : ''">
+                        :class="{selected: libraryStore.selectedCharacters.has(character)}">
     	  			  		<div class="character-image">
                 	  		<img :src="libraryStore.getCharacterImagePath(character)" alt="character">
                 	  </div>
@@ -22,7 +22,7 @@
                 		<a href="#filters"
                 	      @click="libraryStore.selectGenre(genre)"
 			  			  	      class="button"
-                        :class="libraryStore.selectedGenres.has(genre) ? 'selected' : ''">
+                        :class="{selected: libraryStore.selectedGenres.has(genre)}">
     	  			  		    {{ genre }}
                 	  </a>
     	  			  </li>

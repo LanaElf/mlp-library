@@ -512,201 +512,6 @@ export const fanfics: Fanfic[] = [
         ]
     },
     {
-        id: 4,
-        name: 'Винил и Октавия: Университетские дни',
-        pathName: 'Vinil_i_Oktaviya_Universitetskie_dni',
-        wordCount: 57767,
-        chaptersCount: 22,
-        authorName: 'Polex',
-        authorLink: 'https://tabun.everypony.ru/profile/Polex/',
-        genres: ['Зарисовка', 'Повседневность', 'Романтика', 'Флафф', 'Юмор', 'Шиппинг', 'Школьные истории'],
-        sourceLink: 'https://ponyfiction.org/story/9156/',
-        characters: [
-            'Octavia Melody',
-            'Vinyl Scratch',
-            'Lyra Heartstrings',
-            'Sweetie Drops',
-        ],
-        chapters: [
-            {
-                id: 1,
-                name: 'Глава 1',
-                fileName: '01_Glava_1.html',
-                anchor: '#I',
-                content: '',
-                link: '<div id="I"></div>',
-            },
-            {
-                id: 2,
-                name: 'Глава 2',
-                fileName: '02_Glava_2.html',
-                anchor: '#II',
-                content: '',
-                link: '<div id="II"></div>',
-            },
-            {
-                id: 3,
-                name: 'Глава 3',
-                fileName: '03_Glava_3.html',
-                anchor: '#III',
-                content: '',
-                link: '<div id="III"></div>',
-            },
-            {
-                id: 4,
-                name: 'Глава 4',
-                fileName: '04_Glava_4.html',
-                anchor: '#IV',
-                content: '',
-                link: '<div id="IV"></div>',
-            },
-            {
-                id: 5,
-                name: 'Глава 5',
-                fileName: '05_Glava_5.html',
-                anchor: '#V',
-                content: '',
-                link: '<div id="V"></div>',
-            },
-            {
-                id: 6,
-                name: 'Глава 6',
-                fileName: '06_Glava_6.html',
-                anchor: '#VI',
-                content: '',
-                link: '<div id="VI"></div>',
-            },
-            {
-                id: 7,
-                name: 'Глава 7',
-                fileName: '07_Glava_7.html',
-                anchor: '#VII',
-                content: '',
-                link: '<div id="VII"></div>',
-            },
-            {
-                id: 8,
-                name: 'Глава 8',
-                fileName: '08_Glava_8.html',
-                anchor: '#VIII',
-                content: '',
-                link: '<div id="VIII"></div>',
-            },
-            {
-                id: 9,
-                name: 'Глава 9',
-                fileName: '09_Glava_9.html',
-                anchor: '#IX',
-                content: '',
-                link: '<div id="IX"></div>',
-            },
-            {
-                id: 10,
-                name: 'Глава 10',
-                fileName: '10_Glava_10.html',
-                anchor: '#X',
-                content: '',
-                link: '<div id="X"></div>',
-            },
-            {
-                id: 11,
-                name: 'Глава 11',
-                fileName: '11_Glava_11.html',
-                anchor: '#XI',
-                content: '',
-                link: '<div id="XI"></div>',
-            },
-            {
-                id: 12,
-                name: 'Глава 12',
-                fileName: '12_Glava_12.html',
-                anchor: '#XII',
-                content: '',
-                link: '<div id="XII"></div>',
-            },
-            {
-                id: 13,
-                name: 'Глава 13',
-                fileName: '13_Glava_13.html',
-                anchor: '#XIII',
-                content: '',
-                link: '<div id="XIII"></div>',
-            },
-            {
-                id: 14,
-                name: 'Глава 14',
-                fileName: '14_Glava_14.html',
-                anchor: '#XIV',
-                content: '',
-                link: '<div id="XIV"></div>',
-            },
-            {
-                id: 15,
-                name: 'Глава 15',
-                fileName: '15_Glava_15.html',
-                anchor: '#XV',
-                content: '',
-                link: '<div id="XV"></div>',
-            },
-            {
-                id: 16,
-                name: 'Глава 16',
-                fileName: '16_Glava_16.html',
-                anchor: '#XVI',
-                content: '',
-                link: '<div id="XVI"></div>',
-            },
-            {
-                id: 17,
-                name: 'Глава 17',
-                fileName: '17_Glava_17.html',
-                anchor: '#XVII',
-                content: '',
-                link: '<div id="XVII"></div>',
-            },
-            {
-                id: 18,
-                name: 'Глава 18',
-                fileName: '18_Glava_18.html',
-                anchor: '#XVIII',
-                content: '',
-                link: '<div id="XVIII"></div>',
-            },
-            {
-                id: 19,
-                name: 'Глава 19',
-                fileName: '19_Glava_19.html',
-                anchor: '#XIX',
-                content: '',
-                link: '<div id="XIX"></div>',
-            },
-            {
-                id: 20,
-                name: 'Глава 20',
-                fileName: '20_Glava_20.html',
-                anchor: '#XX',
-                content: '',
-                link: '<div id="XX"></div>',
-            },
-            {
-                id: 21,
-                name: 'Глава 21',
-                fileName: '21_Glava_21.html',
-                anchor: '#XXI',
-                content: '',
-                link: '<div id="XXI"></div>',
-            },
-            {
-                id: 22,
-                name: 'Эпилог',
-                fileName: '22_Epilog.html',
-                anchor: '#XXII',
-                content: '',
-                link: '<div id="XXII"></div>',
-            },
-        ]
-    },
-    {
         id: 5,
         name: 'Дружба на все времена',
         pathName: 'Druzhba_na_vse_vremena',
@@ -1673,7 +1478,7 @@ export const fanfics: Fanfic[] = [
         wordCount:  31578,
         chaptersCount: 7,
         sourceLink: 'https://ponyfiction.org/story/5642/',
-        authorName: ' Akvinikym',
+        authorName: 'Akvinikym',
         authorLink: 'https://ponyfiction.org/accounts/1408/',
         genres: [ 'Sci-fi', 'Приключения', 'Экшн', 'Optimalverse', 'Виртуальная Эквестрия', 'Люди в Эквестрии', 'Будущее', 'Война'],
         characters: [
@@ -1767,33 +1572,6 @@ export const fanfics: Fanfic[] = [
         ]
     },
     {
-        id: 19,
-        name: 'Внутривенное вмешательство',
-        pathName: 'Vnutrivennoe_vmeshatel_stvo',
-        wordCount:  7587,
-        chaptersCount: 1,
-        authorName: 'RePitt',
-        authorLink: 'https://tabun.everypony.ru/profile/RePitt/',
-        genres: [ 'Зарисовка', 'Повседневность', 'Юмор'],
-        sourceLink: 'https://ponyfiction.org/story/14173/',
-        characters: [
-            'Nurse Redheart',
-            'Starlight Glimmer',
-            'Trixie Lulamoon',
-            'Other ponies',
-        ],
-        chapters: [
-            {
-                id: 1,
-                name: 'I',
-                fileName: '1_Razboltannaya_magicheskaya_pushka.html',
-                anchor: '#I',
-                content: '',
-                link: '<div id="I"></div>',
-            },
-        ]
-    },
-    {
         id: 20,
         name: 'Высадка на Луне',
         pathName: 'Vysadka_na_Lune',
@@ -1875,13 +1653,19 @@ export const fanfics: Fanfic[] = [
     }
 ].sort((a, b) => a.name.localeCompare(b.name));
 
-function getAllGenres(fanfics: Fanfic[]): string[] {
-    // flatMap собирает все жанры в массив, new Set удаляет повторы
+function getAllAuthors(): string[] {
+    const authorsSet = new Set(fanfics.flatMap(f => f.authorName));
+    return Array.from(authorsSet).sort((a, b) => a.localeCompare(b));
+}
+
+export const authors: string[] = getAllAuthors()
+
+function getAllGenres(): string[] {
     const genresSet = new Set(fanfics.flatMap(f => f.genres));
     return Array.from(genresSet).sort((a, b) => a.localeCompare(b));
 }
 
-export const genres: string[] = getAllGenres(fanfics);
+export const genres: string[] = getAllGenres();
 
 export const characters: Character[] = [
     { name: "Princess Luna", fileName: "luna.png" },
@@ -1899,8 +1683,6 @@ export const characters: Character[] = [
     { name: "Fleur de Lis", fileName: "fleur.png" },
     { name: "Sunset Shimmer", fileName: "sunset.png" },
     { name: "Diamond Tiara", fileName: "tiara.png" },
-    { name: "Octavia Melody", fileName: "octavia.png" },
-    { name: "Vinyl Scratch", fileName: "vinyl.png" },
     { name: "OC", fileName: "oc.png" },
     { name: "Sweetie Drops", fileName: "bonbon.png" },
     { name: "Twilight Sparkle", fileName: "twilight.png" },
